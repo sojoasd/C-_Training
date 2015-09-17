@@ -12,8 +12,6 @@ namespace GoThread_Delegate
     {
         private static void Main(string[] args)
         {
-            Program that = new Program();
-
             //取得 dll 檔案存放的路徑
             Assembly oAss = Assembly.LoadFile(@"E:\Workspaces\Cs_Training\ThreadTest\dllroot\Cars.dll");
 
