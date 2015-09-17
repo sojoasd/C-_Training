@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ThreadTest
+namespace GoThread_Delegate
 {
     public class Program
     {
@@ -15,11 +14,7 @@ namespace ThreadTest
         {
             Program that = new Program();
 
-            //string PathStr = System.IO.Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).ToString();
-
-            //PathStr = PathStr.Replace("bin","");
-
-            Assembly oAss = Assembly.LoadFile(@"E:\Workspaces\ThreadTest\dllroot\Cars.dll");
+            Assembly oAss = Assembly.LoadFile(@"E:\Workspaces\Cs_Training\ThreadTest\dllroot\Cars.dll");
 
             while (true)
             {
@@ -33,22 +28,18 @@ namespace ThreadTest
 
                         MethodInfo method = oAss.GetType(type.FullName).GetMethod("ShowBrand");
 
-                        Thread oth = new Thread(() => that.DoWork(method, obj, new Object[] { }));
-
-                        oth.Start();
-
+                        ThreadStart threadMain = delegate()
+                        {
+                            Object res = method.Invoke(obj, new Object[] { });
+                            Console.WriteLine("the Method returned {0}.", res);
+                        };
+                        new Thread(threadMain).Start();
                         Thread.Sleep(500);
                     }
                 }
-                Thread.Sleep(500);
+
                 Console.WriteLine("====================================================");
             }
-        }
-
-        public void DoWork(MethodInfo method, object obj, params object[] parameters)
-        {
-            Object res = method.Invoke(obj, parameters);
-            Console.WriteLine("the Method returned {0}.", res);
         }
     }
 }

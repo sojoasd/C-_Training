@@ -1,0 +1,5 @@
+E:\Workspaces\Cs_Training\ThreadTest\GoThread_Delegate\bin\Debug\GoThread_Delegate.exe.config
+E:\Workspaces\Cs_Training\ThreadTest\GoThread_Delegate\bin\Debug\GoThread_Delegate.exe
+E:\Workspaces\Cs_Training\ThreadTest\GoThread_Delegate\bin\Debug\GoThread_Delegate.pdb
+E:\Workspaces\Cs_Training\ThreadTest\GoThread_Delegate\obj\Debug\GoThread_Delegate.exe
+E:\Workspaces\Cs_Training\ThreadTest\GoThread_Delegate\obj\Debug\GoThread_Delegate.pdb

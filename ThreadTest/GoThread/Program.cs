@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ThreadTest
+namespace GoThread
 {
     public class Program
     {
@@ -15,11 +14,7 @@ namespace ThreadTest
         {
             Program that = new Program();
 
-            //string PathStr = System.IO.Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).ToString();
-
-            //PathStr = PathStr.Replace("bin","");
-
-            Assembly oAss = Assembly.LoadFile(@"E:\Workspaces\ThreadTest\dllroot\Cars.dll");
+            Assembly oAss = Assembly.LoadFile(@"E:\Workspaces\Cs_Training\ThreadTest\dllroot\Cars.dll");
 
             while (true)
             {
@@ -40,7 +35,7 @@ namespace ThreadTest
                         Thread.Sleep(500);
                     }
                 }
-                Thread.Sleep(500);
+
                 Console.WriteLine("====================================================");
             }
         }
