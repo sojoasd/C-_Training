@@ -28,6 +28,7 @@ namespace GoThread
 
                         MethodInfo method = oAss.GetType(type.FullName).GetMethod("ShowBrand");
 
+                        // 這裡的寫法很像 callback function，此寫法很特殊，因為會帶入引數
                         Thread oth = new Thread(() => that.DoWork(method, obj, new Object[] { }));
 
                         oth.Start();
