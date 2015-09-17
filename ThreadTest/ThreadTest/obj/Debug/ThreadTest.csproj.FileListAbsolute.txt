@@ -1,5 +1,0 @@
-E:\Workspaces\Cs_Training\ThreadTest\ThreadTest\bin\Debug\ThreadTest.exe.config
-E:\Workspaces\Cs_Training\ThreadTest\ThreadTest\bin\Debug\ThreadTest.exe
-E:\Workspaces\Cs_Training\ThreadTest\ThreadTest\bin\Debug\ThreadTest.pdb
-E:\Workspaces\Cs_Training\ThreadTest\ThreadTest\obj\Debug\ThreadTest.exe
-E:\Workspaces\Cs_Training\ThreadTest\ThreadTest\obj\Debug\ThreadTest.pdb
