@@ -28,12 +28,12 @@ namespace GoThread
 
                         MethodInfo method = oAss.GetType(type.FullName).GetMethod("ShowBrand");
 
-                        // 這裡的寫法很像 callback function，此寫法很特殊，因為會帶入引數
+                        // 這裡的寫法很 delegate 或 callback，此寫法很特殊，因為會帶入引數
                         Thread oth = new Thread(() => that.DoWork(method, obj, new Object[] { }));
 
-                        oth.Start();
-
-                        Thread.Sleep(500);
+                        oth.Start(); // 其中一個 Thread 開始執行
+                        //oth.Join(); // 當下的 Thread 跑完才會往下執行
+                        Thread.Sleep(500); // 之後的 Thread 先去睡覺等等再執行，效果有點類似 Join
                     }
                 }
 
@@ -44,7 +44,6 @@ namespace GoThread
         public void DoWork(MethodInfo method, object obj, params object[] parameters)
         {
             Object res = method.Invoke(obj, parameters);
-            Console.WriteLine("the Method returned {0}.", res);
         }
     }
 }

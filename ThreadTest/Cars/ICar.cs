@@ -10,6 +10,6 @@ namespace Cars
     {
         string IBrand { get; }
 
-        string ShowBrand();
+        void ShowBrand();
     }
 }

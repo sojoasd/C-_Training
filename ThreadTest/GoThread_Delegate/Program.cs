@@ -35,8 +35,7 @@ namespace GoThread_Delegate
                         ThreadStart threadMain = delegate()
                         {
                             // 直接用 Invoke 執行 function 取得回傳值
-                            Object res = method.Invoke(obj, new Object[] { });
-                            Console.WriteLine("the Method returned {0}.", res);
+                            method.Invoke(obj, new Object[] { });
                         };
 
                         // 這裡才是真正執行 Thread 運作

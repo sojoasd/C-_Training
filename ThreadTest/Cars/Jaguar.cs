@@ -16,9 +16,12 @@ namespace Cars
             }
         }
 
-        public string ShowBrand()
+        public void ShowBrand()
         {
-            return "The Car's brand is " + this.IBrand;
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(this.IBrand + ":" + i);
+            }
         }
     }
 }

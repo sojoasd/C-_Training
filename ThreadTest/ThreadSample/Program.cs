@@ -20,6 +20,7 @@ namespace ThreadSample
 
             athread.Start();
             Thread.Sleep(500);
+            //athread.Join();
             bthread.Start();
 
             Console.ReadLine();
