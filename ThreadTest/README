@@ -1,0 +1,4 @@
+1. Cars 是 dll 的原始檔，用來存放類別與方法
+2. GoThread、GoThread_Delegate 是主程式，執行 dll 檔
+3. ThreadSample 是 Thread 簡單的範例
+4. dllroot 是存放 Cars 創造出來的 dll 檔
