@@ -1,0 +1,112 @@
+﻿@model PersonMVC.Models.DemoPerson
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "裡面人太多了，不要再加了好嗎";
+}
+
+<style>
+    .CreateBGColor {
+        background-color: coral;
+    }
+
+    .EditBGColor {
+        background-color: cyan;
+    }
+</style>
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm("Create", "DemoPerson", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(name => name.PersonName)
+        <span id="isRepeat" style="color:red"></span>
+        <span id="noRepeat" style="color:forestgreen"></span>
+        @Html.TextBoxFor(name => name.PersonName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sex => sex.PersonSex)
+        <div>
+            <label>@Html.RadioButtonFor(sex => sex.PersonSex, 1) 男 </label>
+            <label>@Html.RadioButtonFor(sex => sex.PersonSex, 0) 女 </label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(brdate => brdate.PersonBirthday)
+        @Html.TextBoxFor(brdate => brdate.PersonBirthday, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+}
+
+<br />
+@{Html.RenderAction("OtherPage", "DemoPerson", new { ActionName = "isCreate" });}
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#PersonBirthday").datepicker({ dateFormat: 'yy-mm-dd' });
+
+            $('#PersonName').on('blur', function (e) {
+                var jsonData = JSON.stringify({ personName: $('#PersonName').val() });
+
+                $.ajax({
+                    url: '@Url.Action("AjaxTest", "DemoPerson")',
+                    async: true,
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        'jsonData': jsonData
+                    },
+                    //contentType: "application/json; charset=utf-8",
+                    success: function (result) {
+                        console.log(result);
+                        if (result) {
+                            $('#isRepeat').html('');
+                            $('#noRepeat').html('此名稱可以使用');
+                        } else {
+                            $('#isRepeat').html('此名稱已重複');
+                            $('#noRepeat').html('');
+                        }
+                    }
+                });
+            })
+
+            var func = function () {
+                var shows = function () {
+                    console.log(val);
+                }
+                return {
+                    init: function () {
+                        console.log('func.init');
+                    }
+                }
+            };
+
+            func.call().init();
+            var ss = new func();
+            ss.init();
+
+            //func.init();
+
+            console.log('===================================');
+
+            var obj = {
+                'func': function () {
+                    return {
+                        init: function () {
+                            console.log('obj.init');
+                        }
+                    }
+                }
+            };
+
+            obj.func.call().init();
+
+        });
+    </script>
+}

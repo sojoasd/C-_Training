@@ -1,0 +1,33 @@
+﻿@model PersonMVC.Models.DemoPersonViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "可以砍小力一點嗎~ 啾咪~";
+}
+
+<h1>@ViewBag.Title</h1>
+<br />
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(name => name.PersonName)</th>
+        <td>@(Model.PersonName)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(sex => sex.PersonSex)</th>
+        <td>@(Model.BoolSex ? "男" : "女")</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(birdate => birdate.PersonBirthday)</th>
+        <td>@(Model.PersonBirthday.HasValue ? ((DateTime)Model.PersonBirthday).ToString("yyyy-MM-dd") : "")</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" />
+        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+    </div>
+}

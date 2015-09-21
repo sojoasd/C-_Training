@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdventureWorksLT2012ModelStoreContainer" CdmEntityContainer="AdventureWorksLT2012Entities">
+    <EntitySetMapping Name="DemoPersons">
+      <EntityTypeMapping TypeName="AdventureWorksLT2012Model.DemoPerson">
+        <MappingFragment StoreEntitySet="DemoPerson">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+          <ScalarProperty Name="PersonSex" ColumnName="PersonSex" />
+          <ScalarProperty Name="PersonBirthday" ColumnName="PersonBirthday" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

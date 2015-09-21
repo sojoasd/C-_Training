@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdventureWorksLT2012Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DemoPerson">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <Property Name="PersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PersonSex" Type="Int32" Nullable="false" />
+    <Property Name="PersonBirthday" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="AdventureWorksLT2012Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DemoPersons" EntityType="Self.DemoPerson" />
+  </EntityContainer>
+</Schema>

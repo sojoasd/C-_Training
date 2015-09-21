@@ -1,0 +1,30 @@
+﻿@model IEnumerable<PersonMVC.Models.DemoPerson>
+
+<style>
+    .CreateBGColor {
+        background-color: coral;
+    }
+
+    .EditBGColor {
+        background-color: cyan;
+    }
+</style>
+
+<div class="@(ViewBag.isCreate == true ? "CreateBGColor" : "EditBGColor")">
+    @if (ViewBag.isCreate || ViewBag.isEdit)
+    {
+        foreach (var item in ViewBag.data)
+        {
+            @item.PersonName<br />
+        }
+    }
+</div>
+
+@*@model List<string>
+
+    @foreach (var str in Model)
+    {
+
+        <Text>Item : </Text>@str
+
+    }*@

@@ -1,0 +1,48 @@
+﻿@model PersonMVC.Models.DemoPersonViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewBag.Title = "不要亂修改我的性別啦";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm("Edit", "DemoPerson", FormMethod.Post))
+{
+    @Html.HiddenFor(id => id.PersonID)
+
+    <div class="form-group">
+        @Html.LabelFor(name => name.PersonName)
+        @Html.EditorFor(name => name.PersonName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sex => sex.PersonSex)
+
+        <div>
+            <label>
+                @Html.RadioButtonFor(sex => sex.BoolSex, true) 男
+            </label>
+            <label>
+                @Html.RadioButtonFor(sex => sex.BoolSex, false) 女
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(brdate => brdate.PersonBirthday)
+        @Html.EditorFor(brdate => brdate.PersonBirthday, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+}
+
+<br />
+@{Html.RenderAction("OtherPage", "DemoPerson", new { ActionName = "isEdit", id = Model.PersonID });}
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#PersonBirthday").datepicker({ dateFormat: 'yy-mm-dd' });
+        });
+    </script>
+}
