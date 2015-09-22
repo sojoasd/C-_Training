@@ -80,4 +80,3 @@ E:\Workspaces\Cs_Training\PersonMVC\PersonMVC\bin\zh-Hant\Microsoft.Owin.Securit
 E:\Workspaces\Cs_Training\PersonMVC\PersonMVC\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 E:\Workspaces\Cs_Training\PersonMVC\PersonMVC\obj\Debug\PersonMVC.dll
 E:\Workspaces\Cs_Training\PersonMVC\PersonMVC\obj\Debug\PersonMVC.pdb
-E:\Workspaces\Cs_Training\PersonMVC\PersonMVC\obj\Debug\PersonMVC.csprojResolveAssemblyReference.cache

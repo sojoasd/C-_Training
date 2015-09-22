@@ -97,7 +97,6 @@ namespace PersonMVC.Models
         [Display(Name = "性別")]
         public int PersonSex { get; set; }
 
-        [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "生日")]
         public Nullable<System.DateTime> PersonBirthday { get; set; }
