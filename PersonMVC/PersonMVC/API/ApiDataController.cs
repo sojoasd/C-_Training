@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 
@@ -20,13 +21,13 @@ namespace PersonMVC.API
         /// <summary>
         /// 最原始的 GET 回傳，沒有傳入任何引數
         /// </summary>
-        public IQueryable GetDemoPerson()
+        public IQueryable Get()
         {
             return db.DemoPersons;
         }
 
         [ResponseType(typeof(DemoPerson))]
-        public IHttpActionResult GetDemoPerson(Guid? id)
+        public IHttpActionResult Get(Guid? id)
         {
             DemoPerson person = db.DemoPersons.Find(id);
             if (person == null)
@@ -45,7 +46,7 @@ namespace PersonMVC.API
         /// person = collection data
         /// </summary>
         [ResponseType(typeof(DemoPerson))]
-        public IHttpActionResult PostCustomer(DemoPerson person)
+        public IHttpActionResult Post(DemoPerson person)
         {
             if (!ModelState.IsValid)
             {
@@ -76,19 +77,19 @@ namespace PersonMVC.API
         /// post man 作法同上面
         /// </summary>
         [ResponseType(typeof(DemoPerson))]
-        public IHttpActionResult PutCustomer(Guid? id, DemoPerson person)
+        public IHttpActionResult Put(Guid? id, DemoPerson person)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != person.PersonID)
-            {
-                return BadRequest();
-            }
+            DemoPerson Oriperson = db.DemoPersons.Find(id);
+            Oriperson.PersonName = person.PersonName == null ? Oriperson.PersonName : person.PersonName;
+            Oriperson.PersonSex = person.PersonSex == null ? Oriperson.PersonSex : person.PersonSex;
+            Oriperson.PersonBirthday = person.PersonBirthday == null ? Oriperson.PersonBirthday : person.PersonBirthday;
 
-            db.Entry(person).State = EntityState.Modified;
+            db.Entry(Oriperson).State = EntityState.Modified;
 
             try
             {
@@ -99,12 +100,12 @@ namespace PersonMVC.API
                 throw;
             }
 
-            //return StatusCode(HttpStatusCode.NoContent);
-            return Ok(person);
+            //return StatusCode(HttpStatusCode.NoContent); //回傳空值
+            return Ok(Oriperson);
         }
 
         [ResponseType(typeof(DemoPerson))]
-        public IHttpActionResult DeleteProduct(Guid? id)
+        public IHttpActionResult Delete(Guid? id)
         {
             DemoPerson person = db.DemoPersons.Find(id);
             if (person == null)
