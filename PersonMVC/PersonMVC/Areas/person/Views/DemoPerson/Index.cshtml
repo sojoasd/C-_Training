@@ -12,137 +12,58 @@
 @*@Html.ActionLink("Logout", "Logout", null, new { @class = "btn btn-default" })*@
 @Html.ActionLink("Logout", "Logout", "TestLogin", new { area = "Admin" }, new { @class = "btn btn-default" })
 <br /><br />
-
-<table class="table">
-    <tr>
-        <th>#</th>
-        <th>
-            @Html.DisplayNameFor(name => name.PersonName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(sex => sex.PersonSex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(brday => brday.PersonBirthday)
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
-    @{int i = 1;}
-    @foreach (var item in ViewBag.showList)
-    {
+<div id="CusPageGridDiv" class="table-responsive">
+    <table id="mytable" class="table">
         <tr>
-            <td>
-                @i
-            </td>
-            <td>
-                @item.PersonName
-            </td>
-            <td>
-                @(item.PersonSex == 1 ? "男" : "女")
-            </td>
-            <td>
-                @(item.PersonBirthday != null ? ((DateTime)item.PersonBirthday).ToString("yyyy/MM/dd") : "")
-            </td>
-            <td>
-                <a href="@Url.Action("edit", "DemoPerson" , new { id=item.PersonID })">
-                    <i class="fa fa-pencil-square-o fa-2x"></i>
-                </a>
-            </td>
-            <td>
-                <a href="@Url.Action("delete", "DemoPerson" , new { id=item.PersonID })">
-                    <i class="fa fa-times fa-2x"></i>
-                </a>
-            </td>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(name => name.PersonName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(sex => sex.PersonSex)
+            </th>
+            <th>
+                @Html.DisplayNameFor(brday => brday.PersonBirthday)
+            </th>
+            <th></th>
+            <th></th>
         </tr>
+        @{int i = 1;}
+        @foreach (var item in ViewBag.showList)
+        {
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.PersonName
+                </td>
+                <td>
+                    @(item.PersonSex == 1 ? "男" : "女")
+                </td>
+                <td>
+                    @(item.PersonBirthday != null ? ((DateTime)item.PersonBirthday).ToString("yyyy/MM/dd") : "")
+                </td>
+                <td>
+                    <a href="@Url.Action("edit", "DemoPerson" , new { id=item.PersonID })">
+                        <i class="fa fa-pencil-square-o fa-2x"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("delete", "DemoPerson" , new { id=item.PersonID })">
+                        <i class="fa fa-times fa-2x"></i>
+                    </a>
+                </td>
+            </tr>
 
-        i++;
-    }
-</table>
-
-
+            i++;
+        }
+    </table>
+</div>
 @section Scripts {
-
+    @Scripts.Render("~/bundles/others")
     <script>
         $(function () {
-
-
-            //$('.worb').remove();
-
-            //var add = function () {
-            //    var total = 0;
-            //    for (var i = 0; i < arguments.length; i++) {
-            //        total += arguments[i];
-            //    }
-            //    return total;
-            //}
-
-            //Function.prototype.method = function (name, func) {
-            //    this.prototype[name] = func;
-            //    return this;
-            //}
-
-            //Function.method('curry', function () {
-            //    var slice = Array.prototype.slice;
-            //    var args = slice.apply(arguments);
-            //    var that = this;
-            //    return function () {
-            //        return that.apply(null, args.concat(slice.apply(arguments)));
-            //    }
-            //});
-
-            //var add_more = add.curry(1);
-            //console.log(add_more(2));
-            //console.log(add_more(3, 3));
-
-            //var curry = function () {
-            //    var that = this;
-            //    var slice = Array.prototype.slice;
-            //    var args = slice.apply(arguments);
-            //    return {
-            //        add: function () {
-            //            var arr = args.concat(slice.apply(arguments));
-            //            var total = 0;
-            //            for (var i = 0; i < arr.length; i++) {
-            //                total += arr[i];
-            //            }
-            //            return total;
-            //        }
-            //    }
-            //};
-
-            //var add_more = curry(1, 2);
-            //console.log(add_more.add(3, 4));
-            //console.log(add_more.add(1, 1));
-
-            var memo = function () {
-                var arr = [0, 1];
-
-                var fib = function (n) {
-                    //console.log(arr);
-                    var res = arr[n];
-                    if (typeof res !== 'number') {
-                        res = fib(n - 1) + fib(n - 2);
-                        arr[n] = res;
-                    }
-                    return res;
-                };
-
-                return {
-                    init: function (n) {
-                        if (typeof (arr[n]) === 'number') {
-                            return arr[n];
-                        }
-                        else {
-                            arr[n] = fib(n);
-                        }
-
-                        return arr[n];
-                    }
-                }
-            }();
-
-            //console.log(memo.init(30));
 
         });
     </script>

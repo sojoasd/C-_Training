@@ -15,16 +15,24 @@ using System.Web.Script.Serialization;
 
 namespace personMVC.Areas.person.Controllers
 {
-    public class DemoPersonController : AuthBaseController
+    public class DemoPersonController : CustomController
     {
         private AdventureWorksLT2012Entities adb = new AdventureWorksLT2012Entities();
 
         public ActionResult Index()
         {
             var person_data = adb.DemoPersons;
-            ViewBag.showList = person_data.ToList();
+            //ViewBag.showList = person_data.ToList();
             //ViewData["person_data"] = person_data.ToList();
 
+            //var infoFabAreas = db.InfoFabAreas.Include(i => i.InfoFabUser).Include(i => i.InfoFabUser1);
+
+            int takenum = 0;
+            int skipnum = 0;
+
+            CreatePage(person_data.Count(), null, out skipnum, out takenum);
+            var data = person_data.OrderBy(c => c.PersonID).Skip(skipnum).Take(takenum).ToList();
+            ViewBag.showList = data;
             return View();
         }
 
