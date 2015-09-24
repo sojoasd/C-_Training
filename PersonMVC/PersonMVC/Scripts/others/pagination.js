@@ -79,7 +79,7 @@
             $('.prebtn').on('click', function (key, el) {
                 if (now_page_num !== 1) {
                     now_page_num -= 1;
-                    window.location.href = window.location.href + '?page_num=' + now_page_num;
+                    window.location.href = controller_name + '?page_num=' + now_page_num;
                 }
             });
 
@@ -87,7 +87,7 @@
             $('.nextbtn').on('click', function (key, el) {
                 if (now_page_num !== total_page_num) {
                     now_page_num += 1;
-                    window.location.href = window.location.href + '?page_num=' + now_page_num;
+                    window.location.href = controller_name + '?page_num=' + now_page_num;
                 }
             });
         };
