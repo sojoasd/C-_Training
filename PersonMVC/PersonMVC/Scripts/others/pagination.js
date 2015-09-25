@@ -15,7 +15,6 @@
         var total_page_num; //總頁數
         var perNum; //每頁有幾筆
         var now_page_num; //現在是第幾頁
-        var controller_name; // Controller/Action，之後點頁碼會用到
 
         var create_page_btn = function () {
             //pre btn
@@ -38,7 +37,7 @@
             for (var i = 1; i <= total_page_num; i++) {
                 $('.otherbtn' + i).find('a')
                     .css('background-color', '')
-                    .attr('href', controller_name + '?page_num=' + i);
+                    .attr('href', replce_page_num(window.location.href) + "/" + i);
 
                 //設定那些頁數按鈕要開或關
                 if (i >= (now_page_num - 3) && i <= (now_page_num + 3)) {
@@ -79,7 +78,7 @@
             $('.prebtn').on('click', function (key, el) {
                 if (now_page_num !== 1) {
                     now_page_num -= 1;
-                    window.location.href = controller_name + '?page_num=' + now_page_num;
+                    window.location.href = replce_page_num(window.location.href) + "/" + now_page_num;
                 }
             });
 
@@ -87,16 +86,26 @@
             $('.nextbtn').on('click', function (key, el) {
                 if (now_page_num !== total_page_num) {
                     now_page_num += 1;
-                    window.location.href = controller_name + '?page_num=' + now_page_num;
+                    window.location.href = replce_page_num(window.location.href) + "/" + now_page_num;
                 }
             });
         };
 
+        // 調整 url 的頁數，使頁數不能累加，如 XXXX / 1 / 2 /
+        var replce_page_num = function (url_str) {
+            var arr = url_str.split("/");
+            var last_str = arr[arr.length - 1];
+            var num = Number(last_str);
+            if (isNaN(num)) {
+                return url_str;
+            } else {
+                last_str = "/" + last_str;
+                return url_str.split(last_str)[0];
+            }
+        };
+
         return {
             init: function (data) {
-                // Controller/Action 字串
-                controller_name = data[0].ControllerName;
-
                 //目前是第幾頁
                 now_page_num = data[0].now_page;
 

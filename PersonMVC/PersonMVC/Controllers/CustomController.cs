@@ -10,10 +10,8 @@ namespace PersonMVC.Controllers
 {
     public class CustomController : Controller
     {
-        public void CreatePage(int dataCount, string ControllerName, out int skipnum, out int takenum)
+        public void CreatePage(int dataCount, int page, out int skipnum, out int takenum)
         {
-            TempData["ControllerName"] = ControllerName;
-
             int total = dataCount;
             TempData["totalcount"] = total;
 
@@ -22,7 +20,7 @@ namespace PersonMVC.Controllers
             TempData["per_num"] = per_num;
 
             //接收頁數，並建立目前是第幾頁
-            int page_num = (HttpContext == null) ? 1 : Convert.ToInt32(HttpContext.Request.Params.Get("page_num"));
+            int page_num = (page == 0) ? 1 : page;
             skipnum = (page_num == 0) ? 0 : (page_num - 1) * per_num;
             takenum = per_num;
             TempData["now_page"] = (page_num == 0) ? 1 : page_num;
@@ -33,7 +31,6 @@ namespace PersonMVC.Controllers
             List<PaginationData> data = new List<PaginationData>()
             {
                 new PaginationData(){
-                    ControllerName = Convert.ToString(TempData["ControllerName"]),
                     totalcount = Convert.ToInt32(TempData["totalcount"]),
                     per_num = Convert.ToInt32(TempData["per_num"]),
                     now_page = Convert.ToInt32(TempData["now_page"])

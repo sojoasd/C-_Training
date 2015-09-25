@@ -7,7 +7,6 @@ namespace PersonMVC.Models
 {
     public class PaginationData
     {
-        public string ControllerName { get; set; }
         public int totalcount { get; set; }
         public int per_num { get; set; }
         public int now_page { get; set; }
