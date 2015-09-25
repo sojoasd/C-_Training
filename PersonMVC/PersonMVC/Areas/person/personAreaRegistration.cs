@@ -25,8 +25,8 @@ namespace personMVC.Areas.person
 
             context.MapRoute(
                 "person_default",
-                "person/{controller}/{action}/{id}/{page}",
-                new { action = "DemoPerson", id = UrlParameter.Optional, page = UrlParameter.Optional }
+                "person/{controller}/{action}/{id}",
+                new { action = "DemoPerson", id = UrlParameter.Optional }
             );
         }
     }
