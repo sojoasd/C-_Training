@@ -15,6 +15,7 @@ namespace PersonMVC
             //config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("multipart/form-data"));
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
 
             // Web API 路由
             config.MapHttpAttributeRoutes();

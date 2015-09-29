@@ -10,10 +10,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace PersonMVC.API
 {
+    [EnableCors(origins: "http://localhost:5705", headers: "*", methods: "*")]
     public class ApiDataController : ApiController
     {
         private AdventureWorksLT2012Entities db = new AdventureWorksLT2012Entities();

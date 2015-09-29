@@ -64,7 +64,11 @@
     @Scripts.Render("~/bundles/others")
     <script>
         $(function () {
-
+            $(function () {
+                $.get("http://localhost:5705/API/ApiData/", function (data) {
+                    console.log(data);
+                });
+            });
         });
     </script>
 }
