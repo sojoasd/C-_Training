@@ -11,6 +11,8 @@ namespace PersonMVC
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery-ui.js"));
+            //"~/Scripts/nv.d3.js",
+            //"~/Scripts/nv.d3.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -32,7 +34,9 @@ namespace PersonMVC
                       "~/Content/site.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/font-awesome.css",
-                      "~/Content/font-awesome.min.css"));
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/nv.d3.css",
+                      "~/Content/nv.d3.min.css"));
         }
     }
 }

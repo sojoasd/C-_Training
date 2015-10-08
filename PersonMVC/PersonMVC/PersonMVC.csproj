@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\TestLoginController.cs" />
+    <Compile Include="Areas\nvd3\Controllers\nvd3exController.cs" />
     <Compile Include="Areas\nvd3\nvd3AreaRegistration.cs" />
     <Compile Include="Areas\person\Controllers\DemoPersonController.cs" />
     <Compile Include="Areas\person\personAreaRegistration.cs" />
@@ -293,11 +294,16 @@
       <DependentUpon>FunData.edmx</DependentUpon>
       <LastGenOutput>FunData.cs</LastGenOutput>
     </Content>
+    <Content Include="LICENSE.md" />
+    <Content Include="Areas\nvd3\Views\web.config" />
+    <Content Include="Areas\nvd3\Views\nvd3ex\CumulativeLineChart.cshtml" />
     <Content Include="Scripts\d3\d3.js" />
     <Content Include="Scripts\d3\d3.min.js" />
     <Content Include="Scripts\d3\LICENSE" />
-    <Content Include="LICENSE.md" />
-    <Content Include="Areas\nvd3\Views\web.config" />
+    <Content Include="Areas\nvd3\Views\nvd3ex\LineChart.cshtml" />
+    <Content Include="Scripts\d3\d3.min.js.map">
+      <DependentUpon>d3.min.js</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -353,7 +359,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\nvd3\Controllers\" />
     <Folder Include="Areas\nvd3\Models\" />
     <Folder Include="Areas\nvd3\Views\Shared\" />
     <Folder Include="Areas\person\Models\" />

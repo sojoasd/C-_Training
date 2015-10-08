@@ -19,7 +19,7 @@ namespace PersonMVC.API
         {
             var FunBasics = db.FunBasics.Select(f => f.FunID).ToList();
 
-            //Guid guid = FunBasics[0];
+            //Guid guid = FunBasics[2];
 
             //List<dynamic> arr = new List<dynamic>();
 
@@ -32,7 +32,7 @@ namespace PersonMVC.API
             //    data.DetailID = Guid.NewGuid();
             //    data.DetailYear = dt;
 
-            //    double num = Math.Round(getRand(20.00, 59.99, arr, n), 2);
+            //    double num = Math.Round(getRand(40.00, 79.99, arr), 2);
 
             //    if (num != 0)
             //    {
@@ -58,16 +58,16 @@ namespace PersonMVC.API
                                 id = g.Key.id,
                                 name = g.Key.name,
                                 data = g.Select(d => new { x = d.x.Value.ToString("yyyy-MM-dd"), y = d.y }).ToList().OrderBy(c => c.x)
-                            }).Where(c => c.name == "Angent").AsQueryable();
+                            }).AsQueryable();
 
             return result;
         }
 
-        public float getRand(double minimum, double maximum, List<dynamic> arr, int n)
+        public float getRand(double minimum, double maximum, List<dynamic> arr)
         {
             Random random = new Random();
 
-            double num = 20 + n + ((random.NextDouble() * (maximum - minimum)) + minimum) / 11.11;
+            double num = 20 + ((random.NextDouble() * (maximum - minimum)) + minimum) / 11.11;
 
             if (arr.Contains(num))
             {
