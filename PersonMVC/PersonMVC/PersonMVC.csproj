@@ -173,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\ApiDataController.cs" />
+    <Compile Include="API\ApiFunController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\TestLoginController.cs" />
+    <Compile Include="Areas\nvd3\nvd3AreaRegistration.cs" />
     <Compile Include="Areas\person\Controllers\DemoPersonController.cs" />
     <Compile Include="Areas\person\personAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -195,7 +197,28 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DemoPerson.cs">
-      <DependentUpon>PersonDB.tt</DependentUpon>
+      <DependentUpon>FunData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunBasic.cs">
+      <DependentUpon>FunData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunData.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunData.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunData.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunData.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FunData.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunDetail.cs">
+      <DependentUpon>FunData.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -224,6 +247,8 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\nv.d3.css" />
+    <Content Include="Content\nv.d3.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -251,6 +276,28 @@
     <Content Include="Areas\person\Views\DemoPerson\Edit.cshtml" />
     <Content Include="Areas\person\Views\DemoPerson\Index.cshtml" />
     <Content Include="Areas\person\Views\DemoPerson\OtherPage.cshtml" />
+    <EntityDeploy Include="Models\FunData.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FunData.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FunData.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FunData.edmx</DependentUpon>
+      <LastGenOutput>FunData.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FunData.edmx.diagram">
+      <DependentUpon>FunData.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\FunData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FunData.edmx</DependentUpon>
+      <LastGenOutput>FunData.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\d3\d3.js" />
+    <Content Include="Scripts\d3\d3.min.js" />
+    <Content Include="Scripts\d3\LICENSE" />
+    <Content Include="LICENSE.md" />
+    <Content Include="Areas\nvd3\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -260,6 +307,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\nv.d3.js" />
+    <Content Include="Scripts\nv.d3.min.js" />
     <Content Include="Scripts\others\pagination.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -304,9 +353,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\nvd3\Controllers\" />
+    <Folder Include="Areas\nvd3\Models\" />
+    <Folder Include="Areas\nvd3\Views\Shared\" />
     <Folder Include="Areas\person\Models\" />
     <Folder Include="Areas\person\Views\Shared\" />
+    <Folder Include="Views\ApiFun\" />
     <Folder Include="Views\Custom\" />
+    <Folder Include="Views\nvd3\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

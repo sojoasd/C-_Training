@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FunDataModelStoreContainer" CdmEntityContainer="FunDataEntities">
+    <EntitySetMapping Name="FunBasics">
+      <EntityTypeMapping TypeName="FunDataModel.FunBasic">
+        <MappingFragment StoreEntitySet="FunBasic">
+          <ScalarProperty Name="FunName" ColumnName="FunName" />
+          <ScalarProperty Name="FunID" ColumnName="FunID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DemoPersons">
+      <EntityTypeMapping TypeName="FunDataModel.DemoPerson">
+        <MappingFragment StoreEntitySet="DemoPerson">
+          <ScalarProperty Name="PersonBirthday" ColumnName="PersonBirthday" />
+          <ScalarProperty Name="PersonSex" ColumnName="PersonSex" />
+          <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FunDetails">
+      <EntityTypeMapping TypeName="FunDataModel.FunDetail">
+        <MappingFragment StoreEntitySet="FunDetail">
+          <ScalarProperty Name="DetailNav" ColumnName="DetailNav" />
+          <ScalarProperty Name="DetailYear" ColumnName="DetailYear" />
+          <ScalarProperty Name="FunID" ColumnName="FunID" />
+          <ScalarProperty Name="DetailID" ColumnName="DetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

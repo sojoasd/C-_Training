@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FunDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DemoPerson">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PersonName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonSex" Type="int" Nullable="false" />
+          <Property Name="PersonBirthday" Type="date" />
+        </EntityType>
+        <EntityType Name="FunBasic">
+          <Key>
+            <PropertyRef Name="FunID" />
+          </Key>
+          <Property Name="FunID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FunName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FunDetail">
+          <Key>
+            <PropertyRef Name="DetailID" />
+          </Key>
+          <Property Name="DetailID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FunID" Type="uniqueidentifier" />
+          <Property Name="DetailYear" Type="date" />
+          <Property Name="DetailNav" Type="float" />
+        </EntityType>
+        <Association Name="FK_FunDetail_FunBasic">
+          <End Role="FunBasic" Type="Self.FunBasic" Multiplicity="0..1" />
+          <End Role="FunDetail" Type="Self.FunDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FunBasic">
+              <PropertyRef Name="FunID" />
+            </Principal>
+            <Dependent Role="FunDetail">
+              <PropertyRef Name="FunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FunDataModelStoreContainer">
+          <EntitySet Name="DemoPerson" EntityType="Self.DemoPerson" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FunBasic" EntityType="Self.FunBasic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FunDetail" EntityType="Self.FunDetail" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FunDetail_FunBasic" Association="Self.FK_FunDetail_FunBasic">
+            <End Role="FunBasic" EntitySet="FunBasic" />
+            <End Role="FunDetail" EntitySet="FunDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FunDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FunDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FunBasics" EntityType="FunDataModel.FunBasic" />
+          <EntitySet Name="DemoPersons" EntityType="FunDataModel.DemoPerson" />
+          <EntitySet Name="FunDetails" EntityType="FunDataModel.FunDetail" />
+          <AssociationSet Name="FK_FunDetail_FunBasic" Association="FunDataModel.FK_FunDetail_FunBasic">
+            <End Role="FunBasic" EntitySet="FunBasics" />
+            <End Role="FunDetail" EntitySet="FunDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="FunBasic">
+          <Key>
+            <PropertyRef Name="FunID" />
+          </Key>
+          <Property Name="FunID" Type="Guid" Nullable="false" />
+          <Property Name="FunName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FunDetails" Relationship="FunDataModel.FK_FunDetail_FunBasic" FromRole="FunBasic" ToRole="FunDetail" />
+        </EntityType>
+        <EntityType Name="DemoPerson">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Guid" Nullable="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PersonSex" Type="Int32" Nullable="false" />
+          <Property Name="PersonBirthday" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="FunDetail">
+          <Key>
+            <PropertyRef Name="DetailID" />
+          </Key>
+          <Property Name="DetailID" Type="Guid" Nullable="false" />
+          <Property Name="FunID" Type="Guid" />
+          <Property Name="DetailYear" Type="DateTime" Precision="0" />
+          <Property Name="DetailNav" Type="Double" />
+          <NavigationProperty Name="FunBasic" Relationship="FunDataModel.FK_FunDetail_FunBasic" FromRole="FunDetail" ToRole="FunBasic" />
+        </EntityType>
+        <Association Name="FK_FunDetail_FunBasic">
+          <End Type="FunDataModel.FunBasic" Role="FunBasic" Multiplicity="0..1" />
+          <End Type="FunDataModel.FunDetail" Role="FunDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FunBasic">
+              <PropertyRef Name="FunID" />
+            </Principal>
+            <Dependent Role="FunDetail">
+              <PropertyRef Name="FunID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FunDataModelStoreContainer" CdmEntityContainer="FunDataEntities">
+          <EntitySetMapping Name="FunBasics">
+            <EntityTypeMapping TypeName="FunDataModel.FunBasic">
+              <MappingFragment StoreEntitySet="FunBasic">
+                <ScalarProperty Name="FunName" ColumnName="FunName" />
+                <ScalarProperty Name="FunID" ColumnName="FunID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DemoPersons">
+            <EntityTypeMapping TypeName="FunDataModel.DemoPerson">
+              <MappingFragment StoreEntitySet="DemoPerson">
+                <ScalarProperty Name="PersonBirthday" ColumnName="PersonBirthday" />
+                <ScalarProperty Name="PersonSex" ColumnName="PersonSex" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FunDetails">
+            <EntityTypeMapping TypeName="FunDataModel.FunDetail">
+              <MappingFragment StoreEntitySet="FunDetail">
+                <ScalarProperty Name="DetailNav" ColumnName="DetailNav" />
+                <ScalarProperty Name="DetailYear" ColumnName="DetailYear" />
+                <ScalarProperty Name="FunID" ColumnName="FunID" />
+                <ScalarProperty Name="DetailID" ColumnName="DetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

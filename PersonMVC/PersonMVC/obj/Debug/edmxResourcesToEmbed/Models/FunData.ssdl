@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FunDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DemoPerson">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PersonName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PersonSex" Type="int" Nullable="false" />
+    <Property Name="PersonBirthday" Type="date" />
+  </EntityType>
+  <EntityType Name="FunBasic">
+    <Key>
+      <PropertyRef Name="FunID" />
+    </Key>
+    <Property Name="FunID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FunName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FunDetail">
+    <Key>
+      <PropertyRef Name="DetailID" />
+    </Key>
+    <Property Name="DetailID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FunID" Type="uniqueidentifier" />
+    <Property Name="DetailYear" Type="date" />
+    <Property Name="DetailNav" Type="float" />
+  </EntityType>
+  <Association Name="FK_FunDetail_FunBasic">
+    <End Role="FunBasic" Type="Self.FunBasic" Multiplicity="0..1" />
+    <End Role="FunDetail" Type="Self.FunDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FunBasic">
+        <PropertyRef Name="FunID" />
+      </Principal>
+      <Dependent Role="FunDetail">
+        <PropertyRef Name="FunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FunDataModelStoreContainer">
+    <EntitySet Name="DemoPerson" EntityType="Self.DemoPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FunBasic" EntityType="Self.FunBasic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FunDetail" EntityType="Self.FunDetail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FunDetail_FunBasic" Association="Self.FK_FunDetail_FunBasic">
+      <End Role="FunBasic" EntitySet="FunBasic" />
+      <End Role="FunDetail" EntitySet="FunDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FunDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FunDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FunBasics" EntityType="FunDataModel.FunBasic" />
+    <EntitySet Name="DemoPersons" EntityType="FunDataModel.DemoPerson" />
+    <EntitySet Name="FunDetails" EntityType="FunDataModel.FunDetail" />
+    <AssociationSet Name="FK_FunDetail_FunBasic" Association="FunDataModel.FK_FunDetail_FunBasic">
+      <End Role="FunBasic" EntitySet="FunBasics" />
+      <End Role="FunDetail" EntitySet="FunDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FunBasic">
+    <Key>
+      <PropertyRef Name="FunID" />
+    </Key>
+    <Property Name="FunID" Type="Guid" Nullable="false" />
+    <Property Name="FunName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FunDetails" Relationship="FunDataModel.FK_FunDetail_FunBasic" FromRole="FunBasic" ToRole="FunDetail" />
+  </EntityType>
+  <EntityType Name="DemoPerson">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="Guid" Nullable="false" />
+    <Property Name="PersonName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PersonSex" Type="Int32" Nullable="false" />
+    <Property Name="PersonBirthday" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="FunDetail">
+    <Key>
+      <PropertyRef Name="DetailID" />
+    </Key>
+    <Property Name="DetailID" Type="Guid" Nullable="false" />
+    <Property Name="FunID" Type="Guid" />
+    <Property Name="DetailYear" Type="DateTime" Precision="0" />
+    <Property Name="DetailNav" Type="Double" />
+    <NavigationProperty Name="FunBasic" Relationship="FunDataModel.FK_FunDetail_FunBasic" FromRole="FunDetail" ToRole="FunBasic" />
+  </EntityType>
+  <Association Name="FK_FunDetail_FunBasic">
+    <End Type="FunDataModel.FunBasic" Role="FunBasic" Multiplicity="0..1" />
+    <End Type="FunDataModel.FunDetail" Role="FunDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FunBasic">
+        <PropertyRef Name="FunID" />
+      </Principal>
+      <Dependent Role="FunDetail">
+        <PropertyRef Name="FunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
