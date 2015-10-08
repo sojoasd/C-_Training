@@ -81,17 +81,4 @@ namespace PersonMVC.API
             return Convert.ToSingle(num);
         }
     }
-
-    public class TT
-    {
-        public string x { set; get; }
-        public double y { set; get; }
-    }
-
-    public class TTA
-    {
-        public Guid id { set; get; }
-        public string name { set; get; }
-        public IList<TT> data { set; get; }
-    }
 }
