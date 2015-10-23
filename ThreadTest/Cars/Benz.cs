@@ -18,10 +18,7 @@ namespace Cars
 
         public void ShowBrand()
         {
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(this.IBrand + ":" + i);
-            }
+            Console.WriteLine(this.IBrand + " is a car !");
         }
     }
 }
