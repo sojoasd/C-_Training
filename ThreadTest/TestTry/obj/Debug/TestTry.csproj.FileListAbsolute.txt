@@ -1,0 +1,5 @@
+E:\Workspaces\Cs_Training\ThreadTest\TestTry\bin\Debug\TestTry.exe.config
+E:\Workspaces\Cs_Training\ThreadTest\TestTry\bin\Debug\TestTry.exe
+E:\Workspaces\Cs_Training\ThreadTest\TestTry\bin\Debug\TestTry.pdb
+E:\Workspaces\Cs_Training\ThreadTest\TestTry\obj\Debug\TestTry.exe
+E:\Workspaces\Cs_Training\ThreadTest\TestTry\obj\Debug\TestTry.pdb
