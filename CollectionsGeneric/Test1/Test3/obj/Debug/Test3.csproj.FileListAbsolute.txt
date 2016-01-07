@@ -1,0 +1,6 @@
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\bin\Debug\Test3.exe.config
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\bin\Debug\Test3.exe
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\bin\Debug\Test3.pdb
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\obj\Debug\Test3.csprojResolveAssemblyReference.cache
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\obj\Debug\Test3.exe
+E:\Workspaces\Cs_Training\CollectionsGeneric\Test1\Test3\obj\Debug\Test3.pdb
